@@ -1,15 +1,12 @@
 package com.lijiawei.education.serviceedu.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lijiawei.education.commonbase.union.result.UnionResponse;
 import com.lijiawei.education.serviceedu.entity.Teacher;
-import com.lijiawei.education.serviceedu.result.Result;
-import com.lijiawei.education.serviceedu.result.ResultElse;
-import com.lijiawei.education.serviceedu.result.UnionResponse;
 import com.lijiawei.education.serviceedu.service.impl.TeacherServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +19,7 @@ import java.util.List;
  * @author lijiawei
  * @since 2022-10-11
  */
-@Api("讲师管理")
+@Api(tags = "讲师管理")
 @RestController
 @RequestMapping("/service_edu/teacher")
 public class TeacherController {
@@ -35,14 +32,14 @@ public class TeacherController {
 
     @ApiOperation("所有讲师列表")
     @GetMapping
-    @UnionResponse(code = 199,msg = "返回成昆",resultClass = ResultElse.class)
+    @UnionResponse
     public List<Teacher> list() {
         return teacherService.list();
     }
 
     @ApiOperation("根据ID删除讲师")
     @DeleteMapping("{id}")
-    @UnionResponse(code = 201,msg = "返回成昆啦")
+    @UnionResponse
     public boolean removeById(
             @ApiParam(name = "id", value = "讲师ID")
             @PathVariable String id) {
@@ -59,5 +56,6 @@ public class TeacherController {
         List<Teacher> records = page.getRecords();
         return records;
     }
+
 
 }

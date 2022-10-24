@@ -7,9 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 
 @SpringBootApplication
-@EnableOpenApi
 @ComponentScan(basePackages = {"com.lijiawei.education.serviceedu",
-		"com.lijiawei.education.commonbase.config"})
+		"com.lijiawei.education.commonbase"})
 public class ServiceEduApplication {
 
 	public static void main(String[] args) {
