@@ -26,6 +26,7 @@ import java.util.List;
 @Api(tags = "讲师管理")
 @RestController
 @RequestMapping("/service_edu/teacher")
+@UnionResponse
 public class TeacherController {
 
     private final TeacherServiceImpl teacherService;
@@ -36,23 +37,18 @@ public class TeacherController {
 
     @ApiOperation("所有讲师列表")
     @GetMapping
-    @UnionResponse
     public List<Teacher> list() {
         return teacherService.list();
     }
 
-    @ApiOperation("根据ID删除讲师")
-    @DeleteMapping("{id}")
-    @UnionResponse
-    public boolean removeById(
-            @ApiParam(name = "id", value = "讲师ID")
-            @PathVariable String id) {
-        return teacherService.removeById(id);
+    @ApiOperation("查询单个讲师")
+    @GetMapping("/{id}")
+    public Teacher one(@PathVariable long id) {
+        return teacherService.getById(id);
     }
 
     @ApiOperation("分页查询讲师列表,带条件判断")
     @GetMapping("/page/{current}/{total}")
-    @UnionResponse
     public List<Teacher> listPage(@PathVariable long current,
                                   @PathVariable long total,
                                 @RequestBody TeacherQueryVO queryVo) {
@@ -80,6 +76,26 @@ public class TeacherController {
         teacherService.page(page,lqw);
         List<Teacher> records = page.getRecords();
         return records;
+    }
+
+//    @ApiOperation("添加讲师")
+//    @PostMapping
+//    public boolean add(Teacher teacher) {
+//        return teacherService.save(teacher);
+//    }
+//
+//    @ApiOperation("修改讲师")
+//    @PutMapping
+//    public boolean update(Teacher teacher) {
+//        return teacherService.update()
+//    }
+
+    @ApiOperation("根据ID删除讲师")
+    @DeleteMapping("{id}")
+    public boolean removeById(
+            @ApiParam(name = "id", value = "讲师ID")
+            @PathVariable String id) {
+        return teacherService.removeById(id);
     }
 
 

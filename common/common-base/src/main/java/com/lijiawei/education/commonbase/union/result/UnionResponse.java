@@ -11,7 +11,7 @@ import java.lang.annotation.*;
  * @Date: 2022/10/24 15:44
  * @Version: 1.0
  */
-@Target({ElementType.METHOD})
+@Target({ElementType.METHOD,ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface UnionResponse {
