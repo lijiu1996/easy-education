@@ -3,6 +3,8 @@ package com.lijiawei.education.serviceedu.entity.vo;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class TeacherQueryVO {
 
