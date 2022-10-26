@@ -98,5 +98,14 @@ public class TeacherController {
         return teacherService.removeById(id);
     }
 
+    @ApiOperation("根据列表进行删除")
+    @DeleteMapping
+    public boolean remove(
+            @ApiParam(name = "idList", value = "id列表")
+            @RequestBody List<Integer> ids
+    ) {
+        return teacherService.removeBatchByIds(ids);
+    }
+
 
 }
