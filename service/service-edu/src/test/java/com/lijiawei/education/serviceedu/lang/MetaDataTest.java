@@ -1,4 +1,4 @@
-package com.lijiawei.education.serviceedu;
+package com.lijiawei.education.serviceedu.lang;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.type.ClassMetadata;

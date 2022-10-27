@@ -1,4 +1,4 @@
-package com.lijiawei.education.serviceedu;
+package com.lijiawei.education.serviceedu.generator;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
@@ -27,7 +27,7 @@ public class MpGeneratorTest {
                             .pathInfo(Collections.singletonMap(OutputFile.xml, "D:\\Classes\\项目\\3 尚硅谷谷粒学院\\myProject\\service\\service-edu\\src\\main\\resources\\mapper")); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("edu_teacher")// 设置需要生成的表名
+                    builder.addInclude("edu_subject")// 设置需要生成的表名
                             .addTablePrefix("edu_") // 设置过滤表前缀
                             .entityBuilder()
                             .enableLombok()

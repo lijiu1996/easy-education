@@ -1,4 +1,4 @@
-package com.lijiawei.education.serviceedu;
+package com.lijiawei.education.serviceedu.lang;
 
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
@@ -28,7 +28,7 @@ public class MetaDataTest2 {
         String configuration = "org.springframework.context.annotation.Configuration";
 
         CachingMetadataReaderFactory factory = new CachingMetadataReaderFactory();
-        MetadataReader metadataReader = factory.getMetadataReader("com.lijiawei.education.serviceedu.MetaDataTest2.Config");
+        MetadataReader metadataReader = factory.getMetadataReader("com.lijiawei.education.serviceedu.lang.MetaDataTest2.Config");
         AnnotationMetadata meta = metadataReader.getAnnotationMetadata();
 
         boolean annotated = meta.isAnnotated(component);
