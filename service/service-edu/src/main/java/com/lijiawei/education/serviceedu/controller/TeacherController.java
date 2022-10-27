@@ -31,6 +31,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/service_edu/teachers")
 @UnionResponse
+@CrossOrigin
 public class TeacherController {
 
     private final TeacherServiceImpl teacherService;
@@ -58,10 +59,10 @@ public class TeacherController {
     }
 
     @ApiOperation("分页查询讲师列表,带条件判断")
-    @GetMapping(value = "/page/{current}/{total}")
+    @PostMapping(value = "/page/{current}/{total}")
     public TeacherListDTO listPage(@PathVariable long current,
                                   @PathVariable long total,
-                                @RequestBody TeacherQueryVO queryVo) {
+                                @RequestBody(required = false) TeacherQueryVO queryVo) {
         LambdaQueryWrapper<Teacher> lqw = null;
         if (queryVo != null) {
             lqw = new LambdaQueryWrapper<>();
@@ -85,7 +86,7 @@ public class TeacherController {
         Page<Teacher> page = new Page<>(current,total);
         teacherService.page(page,lqw);
         List<Teacher> records = page.getRecords();
-        return new TeacherListDTO(records);
+        return new TeacherListDTO(records,(int)page.getTotal());
     }
 
     @ApiOperation("添加讲师")
