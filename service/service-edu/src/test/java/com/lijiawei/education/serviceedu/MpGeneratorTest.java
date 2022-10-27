@@ -1,8 +1,9 @@
-package com.lijiawei.education.serviceedu.generator;
+package com.lijiawei.education.serviceedu;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
+import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -16,7 +17,7 @@ public class MpGeneratorTest {
         FastAutoGenerator.create("jdbc:mysql://localhost:3306/glxy", "root", "123456")
                 .globalConfig(builder -> {
                     builder.author("lijiawei") // 设置作者
-//                            .enableSwagger() // 开启 swagger 模式
+                            .enableSwagger() // 开启 swagger 模式
                             .dateType(DateType.TIME_PACK) // 时间类型选择java8时间类型
                             .outputDir("D:\\Classes\\项目\\3 尚硅谷谷粒学院\\myProject\\service\\service-edu\\src\\main\\java"); // 指定输出目录
 
