@@ -1,5 +1,6 @@
 package com.lijiawei.education.serviceedu.entity.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -15,7 +16,8 @@ public class TeacherQueryVO {
     private Integer level;
 
     @ApiModelProperty(value = "查询开始时间")
-    private String begin;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime begin;
 
     @ApiModelProperty(value = "查询结束时间")
     private String end;

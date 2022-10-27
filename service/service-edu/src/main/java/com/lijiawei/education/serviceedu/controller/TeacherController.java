@@ -13,6 +13,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -63,13 +64,14 @@ public class TeacherController {
         if (queryVo != null) {
             lqw = new LambdaQueryWrapper<>();
             Integer level = queryVo.getLevel();
-            String begin = queryVo.getBegin();
+//            String begin = queryVo.getBegin();
+            LocalDateTime begin = queryVo.getBegin();
             String end = queryVo.getEnd();
             String name = queryVo.getName();
             if (level != null) {
                 lqw.eq(Teacher::getLevel,level);
             }
-            if (StringUtils.hasText(begin)) {
+            if (begin != null) {
                 lqw.ge(Teacher::getGmtCreate,begin);
             }
             if (StringUtils.hasText(end)) {
