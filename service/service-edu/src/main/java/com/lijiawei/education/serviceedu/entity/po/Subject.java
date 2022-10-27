@@ -1,8 +1,7 @@
-package com.lijiawei.education.serviceedu.entity;
+package com.lijiawei.education.serviceedu.entity.po;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import io.swagger.annotations.ApiModel;
@@ -26,6 +25,7 @@ public class Subject implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableId(type= IdType.ASSIGN_ID)
     @ApiModelProperty("课程类别ID")
     private String id;
 

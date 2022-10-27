@@ -1,6 +1,6 @@
 package com.lijiawei.education.serviceedu.mapper;
 
-import com.lijiawei.education.serviceedu.entity.Subject;
+import com.lijiawei.education.serviceedu.entity.po.Subject;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 

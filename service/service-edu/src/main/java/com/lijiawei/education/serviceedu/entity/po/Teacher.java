@@ -1,4 +1,4 @@
-package com.lijiawei.education.serviceedu.entity;
+package com.lijiawei.education.serviceedu.entity.po;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
