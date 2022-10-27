@@ -1,14 +1,18 @@
 package com.lijiawei.education.serviceedu.excel;
 
 import com.alibaba.excel.EasyExcel;
+import com.alibaba.excel.read.listener.PageReadListener;
 import com.alibaba.excel.util.ListUtils;
+import com.lijiawei.education.serviceedu.entity.bean.SubjectExcel;
 import com.lijiawei.education.serviceedu.util.PathUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 public class EasyExcelTest {
 
     @Test
@@ -25,7 +29,14 @@ public class EasyExcelTest {
 
     @Test
     public void simpleRead() {
-
+        String filename = "D:\\test.xlsx";
+        EasyExcel.read(filename, SubjectExcel.class,new PageReadListener<SubjectExcel>(dataList -> {
+            for (SubjectExcel subjectExcelData : dataList) {
+                log.info("读取到一条数据{}",subjectExcelData.toString());
+            }
+        }))
+                .sheet()
+                .doRead();
     }
 
     private List<DemoData> data() {

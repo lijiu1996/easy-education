@@ -1,6 +1,6 @@
 package com.lijiawei.education.serviceedu.entity.dto;
 
-import com.lijiawei.education.serviceedu.entity.Teacher;
+import com.lijiawei.education.serviceedu.entity.po.Teacher;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

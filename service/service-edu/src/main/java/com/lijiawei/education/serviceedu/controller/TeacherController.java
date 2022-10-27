@@ -1,12 +1,9 @@
 package com.lijiawei.education.serviceedu.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lijiawei.education.commonbase.union.exception.ErrorEnum;
-import com.lijiawei.education.commonbase.union.result.Result;
 import com.lijiawei.education.commonbase.union.result.UnionResponse;
-import com.lijiawei.education.serviceedu.entity.Teacher;
+import com.lijiawei.education.serviceedu.entity.po.Teacher;
 import com.lijiawei.education.serviceedu.entity.dto.TeacherListDTO;
 import com.lijiawei.education.serviceedu.entity.vo.TeacherQueryVO;
 import com.lijiawei.education.serviceedu.service.impl.TeacherServiceImpl;
@@ -16,7 +13,6 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**

@@ -1,7 +1,8 @@
 package com.lijiawei.education.serviceedu.service;
 
-import com.lijiawei.education.serviceedu.entity.Subject;
+import com.lijiawei.education.serviceedu.entity.po.Subject;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISubjectService extends IService<Subject> {
 
+    boolean addSubjectTable(MultipartFile file);
 }

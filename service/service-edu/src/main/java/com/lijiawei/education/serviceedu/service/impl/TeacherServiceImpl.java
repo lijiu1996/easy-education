@@ -1,6 +1,6 @@
 package com.lijiawei.education.serviceedu.service.impl;
 
-import com.lijiawei.education.serviceedu.entity.Teacher;
+import com.lijiawei.education.serviceedu.entity.po.Teacher;
 import com.lijiawei.education.serviceedu.mapper.TeacherMapper;
 import com.lijiawei.education.serviceedu.service.ITeacherService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
