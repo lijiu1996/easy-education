@@ -15,4 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 public interface ISubjectService extends IService<Subject> {
 
     boolean addSubjectTable(MultipartFile file);
+
+    void getListByCourseId(String id);
 }

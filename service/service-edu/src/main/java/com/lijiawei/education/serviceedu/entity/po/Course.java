@@ -1,5 +1,8 @@
-package com.lijiawei.education.serviceedu.entity;
+package com.lijiawei.education.serviceedu.entity.po;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -25,6 +28,9 @@ public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public static final String STATUS_DRAFT = "draft";
+    public static final String STATUS_PUBLISHED = "NORMAL";
+
     @ApiModelProperty("课程ID")
     private String id;
 
@@ -49,25 +55,28 @@ public class Course implements Serializable {
     @ApiModelProperty("课程封面图片路径")
     private String cover;
 
-    @ApiModelProperty("销售数量")
-    private Long buyCount;
+//    @ApiModelProperty("销售数量")
+//    private Long buyCount;
+//
+//    @ApiModelProperty("浏览数量")
+//    private Long viewCount;
+//
+//    @ApiModelProperty("乐观锁")
+//    private Long version;
 
-    @ApiModelProperty("浏览数量")
-    private Long viewCount;
-
-    @ApiModelProperty("乐观锁")
-    private Long version;
-
-    @ApiModelProperty("课程状态 Draft未发布  Normal已发布")
-    private String status;
+//    @ApiModelProperty("课程状态 Draft未发布  Normal已发布")
+//    private String status;
 
     @ApiModelProperty("逻辑删除 1（true）已删除， 0（false）未删除")
+    @TableLogic
     private Integer isDeleted;
 
     @ApiModelProperty("创建时间")
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime gmtCreate;
 
     @ApiModelProperty("更新时间")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime gmtModified;
 
 

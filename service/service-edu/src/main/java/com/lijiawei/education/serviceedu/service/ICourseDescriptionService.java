@@ -1,6 +1,6 @@
 package com.lijiawei.education.serviceedu.service;
 
-import com.lijiawei.education.serviceedu.entity.CourseDescription;
+import com.lijiawei.education.serviceedu.entity.po.CourseDescription;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

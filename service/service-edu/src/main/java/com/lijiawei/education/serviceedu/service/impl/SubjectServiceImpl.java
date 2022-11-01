@@ -52,4 +52,10 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectMapper, Subject> impl
         })).sheet().doRead();
         return true;
     }
+
+    // 返回课程信息嵌套列表
+    @Override
+    public void getListByCourseId(String id) {
+
+    }
 }
