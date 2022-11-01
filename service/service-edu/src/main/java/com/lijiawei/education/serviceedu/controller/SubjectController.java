@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -46,9 +47,9 @@ public class SubjectController {
     }
 
     @ApiOperation("查询课程分类嵌套列表")
-    @GetMapping("")
-    public SubjectNestedDTO getSubjects(String id) {
-        subjectService.getListByCourseId(id);
+    @GetMapping("/list")
+    public List<SubjectNestedDTO> getSubjects() {
+        return subjectService.getSubjects();
     }
 
 }

@@ -46,5 +46,4 @@ public class Subject implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime gmtModified;
 
-
 }

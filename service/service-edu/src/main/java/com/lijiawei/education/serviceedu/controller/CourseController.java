@@ -77,6 +77,7 @@ public class CourseController {
     public boolean updateCourse(@RequestBody CourseDTO course) {
         String id = course.getId();
         courseService.updateCourse(course);
+        return false;
     }
 
     //6. delete

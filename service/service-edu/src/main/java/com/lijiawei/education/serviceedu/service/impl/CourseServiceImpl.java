@@ -40,7 +40,7 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         description.setDescription(courseDTO.getDescription());
         boolean save1 = courseDescriptionService.save(description);
         if (!save1) {
-            throw new BusinessException("保存课程简介失败",500)
+            throw new BusinessException("保存课程简介失败",500);
         }
         return course.getId();
     }
@@ -52,6 +52,6 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
      */
     @Override
     public String updateCourse(CourseDTO course) {
-        return ;
+        return null ;
     }
 }
