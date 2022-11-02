@@ -30,11 +30,14 @@ import java.util.List;
 @CrossOrigin
 public class CourseController {
 
-    @Autowired
-    private ICourseService courseService;
+    private final ICourseService courseService;
 
-    @Autowired
-    private ICourseDescriptionService descriptionService;
+    private final ICourseDescriptionService descriptionService;
+
+    public CourseController(ICourseService courseService, ICourseDescriptionService descriptionService) {
+        this.courseService = courseService;
+        this.descriptionService = descriptionService;
+    }
 
     //1. getById
     @ApiOperation("根据id查询课程")
