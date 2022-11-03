@@ -1,7 +1,10 @@
 package com.lijiawei.education.serviceedu.service;
 
+import com.lijiawei.education.serviceedu.entity.dto.ChapterDTO;
 import com.lijiawei.education.serviceedu.entity.po.Chapter;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IChapterService extends IService<Chapter> {
 
+    List<ChapterDTO> nestedList(String id);
 }

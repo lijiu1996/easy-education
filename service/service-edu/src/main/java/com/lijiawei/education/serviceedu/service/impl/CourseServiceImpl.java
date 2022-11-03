@@ -47,11 +47,36 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 
     /**
      * 修改课程信息
-     * @param course
-     * @return
+     * @param courseDTO
      */
     @Override
-    public String updateCourse(CourseDTO course) {
-        return null ;
+    public void updateCourse(CourseDTO courseDTO) {
+        Course course = new Course();
+        BeanUtils.copyProperties(courseDTO,course);
+        boolean b = this.updateById(course);
+        if (!b) {
+            throw new BusinessException("课程信息保存失败",500);
+        }
+        CourseDescription courseDescription = new CourseDescription();
+        courseDescription.setDescription(courseDTO.getDescription());
+        courseDescription.setId(courseDTO.getId());
+        boolean resultDescription = courseDescriptionService.updateById(courseDescription);
+        if (!resultDescription) {
+            throw new BusinessException("课程详情信息保存失败",500);
+        }
     }
+
+    @Override
+    public CourseDTO getCourseInfoById(String id) {
+        CourseDTO courseDTO = new CourseDTO();
+        Course course = this.getById(id);
+        if (course == null) {
+            throw new BusinessException("课程数据不存在",20001);
+        }
+        BeanUtils.copyProperties(course,courseDTO);
+        CourseDescription courseDescription = courseDescriptionService.getById(id);
+        courseDTO.setDescription(courseDescription.getDescription());
+        return courseDTO;
+    }
+
 }

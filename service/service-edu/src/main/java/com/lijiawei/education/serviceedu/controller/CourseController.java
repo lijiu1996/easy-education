@@ -25,30 +25,22 @@ import java.util.List;
  */
 @Api(tags = "课程管理")
 @RestController
-@RequestMapping("/serviceedu/course")
+@RequestMapping("/service_edu/course")
 @UnionResponse
 @CrossOrigin
 public class CourseController {
 
     private final ICourseService courseService;
 
-    private final ICourseDescriptionService descriptionService;
-
-    public CourseController(ICourseService courseService, ICourseDescriptionService descriptionService) {
+    public CourseController(ICourseService courseService) {
         this.courseService = courseService;
-        this.descriptionService = descriptionService;
     }
 
     //1. getById
     @ApiOperation("根据id查询课程")
     @GetMapping("{id}")
     public CourseDTO getById(@PathVariable String id) {
-        CourseDTO courseDTO = new CourseDTO();
-        Course course = courseService.getById(id);
-        BeanUtils.copyProperties(course,courseDTO);
-        CourseDescription description = descriptionService.getById(id);
-        courseDTO.setDescription(description.getDescription());
-        return courseDTO;
+        return courseService.getCourseInfoById(id);
     }
 
     //2. getList
@@ -78,7 +70,6 @@ public class CourseController {
     @ApiOperation("更新课程")
     @PutMapping
     public boolean updateCourse(@RequestBody CourseDTO course) {
-        String id = course.getId();
         courseService.updateCourse(course);
         return false;
     }
@@ -91,5 +82,7 @@ public class CourseController {
         boolean b = courseService.removeById(id);
         return b;
     }
+
+
 
 }
