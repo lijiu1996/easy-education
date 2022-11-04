@@ -1,9 +1,7 @@
 package com.lijiawei.education.serviceedu.entity.po;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -28,9 +26,10 @@ public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public static final String STATUS_DRAFT = "draft";
-    public static final String STATUS_PUBLISHED = "NORMAL";
+    public static final String STATUS_DRAFT = "Draft";
+    public static final String STATUS_PUBLISHED = "Normal";
 
+    @TableId
     @ApiModelProperty("课程ID")
     private String id;
 
@@ -64,8 +63,8 @@ public class Course implements Serializable {
 //    @ApiModelProperty("乐观锁")
 //    private Long version;
 
-//    @ApiModelProperty("课程状态 Draft未发布  Normal已发布")
-//    private String status;
+    @ApiModelProperty("课程状态 Draft未发布  Normal已发布")
+    private String status;
 
     @ApiModelProperty("逻辑删除 1（true）已删除， 0（false）未删除")
     @TableLogic

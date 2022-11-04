@@ -105,6 +105,18 @@ public class SubjectServiceImpl extends ServiceImpl<SubjectMapper, Subject> impl
         return getSubjectsBySteam();
     }
 
+    @Override
+    public List<SubjectDTO> getSubjectList(String id) {
+        LambdaQueryWrapper<Subject> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(Subject::getParentId,id);
+        return this.list(lqw).stream().
+                map(subject -> {
+                    SubjectDTO subjectDTO = new SubjectDTO();
+                    BeanUtils.copyProperties(subject,subjectDTO);
+                    return subjectDTO;
+                }).collect(Collectors.toList());
+    }
+
     public List<SubjectNestedDTO> getSubjectsBySteam() {
         List<Subject> list = this.list();
         Map<String, SubjectNestedDTO> cache = list.stream().

@@ -34,14 +34,34 @@ public class ChapterController {
 
     // 1. 根据课程id查询该课程对应的章节和小节信息（嵌套两层)
     @ApiOperation("返回课程对应的章节列表信息")
-    @GetMapping("{id}")
+    @GetMapping("list/{id}")
     public List<ChapterDTO> getListById(@PathVariable String id) {
         return chapterService.nestedList(id);
     }
 
     @ApiOperation("添加课程的章节信息")
-    @PostMapping()
-    public void addChapterInfo() {
+    @PostMapping
+    public Boolean addChapterInfo(@RequestBody Chapter chapter) {
+        chapterService.save(chapter);
+        return true;
+    }
 
+    @ApiOperation("根据id回显对应的章节信息")
+    @GetMapping("{id}")
+    public Chapter getChapterInfoById(@PathVariable String id) {
+        return chapterService.getById(id);
+    }
+
+    @ApiOperation("修改课程的章节信息")
+    @PutMapping
+    public Boolean updateChapterInfo(@RequestBody Chapter chapter) {
+        chapterService.updateById(chapter);
+        return true;
+    }
+
+    @ApiOperation("根据id删除课程的章节信息")
+    @DeleteMapping("{id}")
+    public Boolean deleteById(@PathVariable String id) {
+        return chapterService.deleteById(id);
     }
 }
