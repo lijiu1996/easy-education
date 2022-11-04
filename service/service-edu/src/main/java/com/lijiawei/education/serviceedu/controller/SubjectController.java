@@ -2,6 +2,7 @@ package com.lijiawei.education.serviceedu.controller;
 
 import com.alibaba.excel.EasyExcel;
 import com.lijiawei.education.commonbase.union.result.UnionResponse;
+import com.lijiawei.education.serviceedu.entity.dto.SubjectDTO;
 import com.lijiawei.education.serviceedu.entity.dto.SubjectNestedDTO;
 import com.lijiawei.education.serviceedu.service.ISubjectService;
 import io.swagger.annotations.Api;
@@ -50,6 +51,12 @@ public class SubjectController {
     @GetMapping("/list")
     public List<SubjectNestedDTO> getSubjects() {
         return subjectService.getSubjects();
+    }
+
+    @ApiOperation("查询课程二级分类列表")
+    @GetMapping("/listSubject/{id}")
+    public List<SubjectDTO> getSubjectList(@PathVariable String id) {
+        return subjectService.getSubjectList(id);
     }
 
 }

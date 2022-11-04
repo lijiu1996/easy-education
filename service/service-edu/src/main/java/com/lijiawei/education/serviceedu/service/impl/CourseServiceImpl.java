@@ -2,13 +2,21 @@ package com.lijiawei.education.serviceedu.service.impl;
 
 import com.lijiawei.education.commonbase.union.exception.BusinessException;
 import com.lijiawei.education.serviceedu.entity.dto.CourseDTO;
+import com.lijiawei.education.serviceedu.entity.dto.CourseListDTO;
+import com.lijiawei.education.serviceedu.entity.dto.CoursePreviewDTO;
+import com.lijiawei.education.serviceedu.entity.dto.CourseQueryDTO;
 import com.lijiawei.education.serviceedu.entity.po.Course;
 import com.lijiawei.education.serviceedu.entity.po.CourseDescription;
 import com.lijiawei.education.serviceedu.mapper.CourseMapper;
+import com.lijiawei.education.serviceedu.service.IChapterService;
 import com.lijiawei.education.serviceedu.service.ICourseService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.lijiawei.education.serviceedu.service.IVideoService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -23,8 +31,14 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
 
     private final CourseDescriptionServiceImpl courseDescriptionService;
 
-    public CourseServiceImpl(CourseDescriptionServiceImpl courseDescriptionService) {
+    private final IChapterService chapterService;
+
+    private final IVideoService videoService;
+
+    public CourseServiceImpl(CourseDescriptionServiceImpl courseDescriptionService, IChapterService chapterService, IVideoService videoService) {
         this.courseDescriptionService = courseDescriptionService;
+        this.chapterService = chapterService;
+        this.videoService = videoService;
     }
 
     @Override
@@ -77,6 +91,32 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         CourseDescription courseDescription = courseDescriptionService.getById(id);
         courseDTO.setDescription(courseDescription.getDescription());
         return courseDTO;
+    }
+
+    @Override
+    public CoursePreviewDTO getPreview(String id) {
+        return baseMapper.getPreviewById(id);
+    }
+
+    @Override
+    public boolean publishById(String id) {
+        Course course = new Course();
+        course.setId(id);
+        course.setStatus(Course.STATUS_PUBLISHED);
+        return baseMapper.updateById(course) > 0;
+    }
+
+    // 根据id联合删除课程表章节表课程简介表中的值
+    @Override
+    public boolean removeCourseById(String id) {
+        // 删除课程章节和小节信息
+//        videoService.deleteByCourseIdForce(id);
+        chapterService.deleteByCourseIdForce(id);
+        // 删除课程简介信息
+        courseDescriptionService.removeById(id);
+        // 删除课程信息
+        this.removeById(id);
+        return true;
     }
 
 }

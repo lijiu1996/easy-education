@@ -17,4 +17,8 @@ import java.util.List;
 public interface IChapterService extends IService<Chapter> {
 
     List<ChapterDTO> nestedList(String id);
+
+    Boolean deleteById(String id);
+
+    Boolean deleteByCourseIdForce(String id);
 }

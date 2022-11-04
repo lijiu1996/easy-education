@@ -2,6 +2,7 @@ package com.lijiawei.education.serviceedu.entity.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
 import lombok.Data;
 
 /**
@@ -15,5 +16,9 @@ import lombok.Data;
 @ApiModel("课程查询条件")
 public class CourseQueryDTO {
 
+    @ApiModelProperty("课程名称")
+    private String title;
 
+    @ApiModelProperty("课程状态")
+    private String state;
 }

@@ -1,5 +1,6 @@
 package com.lijiawei.education.serviceedu.service;
 
+import com.lijiawei.education.serviceedu.entity.dto.SubjectDTO;
 import com.lijiawei.education.serviceedu.entity.dto.SubjectNestedDTO;
 import com.lijiawei.education.serviceedu.entity.po.Subject;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -22,4 +23,6 @@ public interface ISubjectService extends IService<Subject> {
     void getListByCourseId(String id);
 
     List<SubjectNestedDTO> getSubjects();
+
+    List<SubjectDTO> getSubjectList(String id);
 }

@@ -3,6 +3,7 @@ package com.lijiawei.education.serviceedu.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.lijiawei.education.commonbase.union.exception.BusinessException;
 import com.lijiawei.education.serviceedu.entity.dto.ChapterDTO;
 import com.lijiawei.education.serviceedu.entity.dto.VideoDTO;
 import com.lijiawei.education.serviceedu.entity.po.Chapter;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -62,7 +64,7 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
             for (Video video : videoList) {
                 if (video.getChapterId().equals(chapter.getId())) {
                     VideoDTO videoDTO = new VideoDTO();
-                    BeanUtils.copyProperties(videoDTO,video);
+                    BeanUtils.copyProperties(video,videoDTO);
                     chapterDTO.getChildren().add(videoDTO);
                 }
             }
@@ -70,6 +72,30 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
 
 
         return chapterDTOList;
+    }
+
+    // 根据id删除课程章节信息
+    @Override
+    public Boolean deleteById(String id){
+        if (videoService.getCountByChapterId(id)) {
+            throw new BusinessException("该章节下存在视频课程,请先删除视频",500);
+        }
+        boolean b = this.removeById(id);
+        return b == true;
+    }
+
+    // 根据课程id删除课程下所有课程章节信息 强制
+    @Override
+    public Boolean deleteByCourseIdForce(String id) {
+        LambdaQueryWrapper<Chapter> qw = new LambdaQueryWrapper<>();
+        qw.eq(Chapter::getCourseId,id);
+        qw.select(Chapter::getId);
+        List<String> list = this.list(qw).stream().map(Chapter::getId).collect(Collectors.toList());
+        // 强制删除小节信息
+        list.forEach(videoService::deleteByChapterIdForce);
+        LambdaQueryWrapper<Chapter> lqw = new LambdaQueryWrapper<>();
+        lqw.eq(Chapter::getCourseId,id);
+        return this.remove(lqw);
     }
 
 
