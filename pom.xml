@@ -27,7 +27,7 @@
         <velocity.version>2.3</velocity.version>
         <springfox.version>3.0.0</springfox.version>
 <!--        <swagger.version>2.7.0</swagger.version>-->
-<!--        <aliyun.oss.version>2.8.3</aliyun.oss.version>-->
+        <aliyun.oss.version>3.15.0</aliyun.oss.version>
 <!--        <jodatime.version>2.10.1</jodatime.version>-->
         <poi.version>5.2.2</poi.version>
         <easyexcel.version>3.1.1</easyexcel.version>
@@ -97,12 +97,12 @@
                 <artifactId>easyexcel</artifactId>
                 <version>3.1.1</version>
             </dependency>
-<!--            &lt;!&ndash;aliyunOSS&ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>com.aliyun.oss</groupId>-->
-<!--                <artifactId>aliyun-sdk-oss</artifactId>-->
-<!--                <version>${aliyun.oss.version}</version>-->
-<!--            </dependency>-->
+            <!--aliyunOSS-->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun.oss.version}</version>
+            </dependency>
 
 <!--            &lt;!&ndash;日期时间工具&ndash;&gt;-->
 <!--            <dependency>-->

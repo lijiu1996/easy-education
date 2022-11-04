@@ -1,5 +1,7 @@
-package com.lijiawei.education.serviceedu.entity;
+package com.lijiawei.education.serviceedu.entity.po;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -37,9 +39,11 @@ public class Chapter implements Serializable {
     private Integer sort;
 
     @ApiModelProperty("创建时间")
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime gmtCreate;
 
     @ApiModelProperty("更新时间")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private LocalDateTime gmtModified;
 
 

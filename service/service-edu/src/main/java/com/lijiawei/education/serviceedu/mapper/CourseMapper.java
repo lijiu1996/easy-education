@@ -1,6 +1,6 @@
 package com.lijiawei.education.serviceedu.mapper;
 
-import com.lijiawei.education.serviceedu.entity.Course;
+import com.lijiawei.education.serviceedu.entity.po.Course;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

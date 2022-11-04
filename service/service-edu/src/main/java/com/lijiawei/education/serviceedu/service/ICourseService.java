@@ -1,6 +1,7 @@
 package com.lijiawei.education.serviceedu.service;
 
-import com.lijiawei.education.serviceedu.entity.Course;
+import com.lijiawei.education.serviceedu.entity.dto.CourseDTO;
+import com.lijiawei.education.serviceedu.entity.po.Course;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -13,4 +14,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ICourseService extends IService<Course> {
 
+    String addCourse(CourseDTO course);
+
+    void updateCourse(CourseDTO course);
+
+    CourseDTO getCourseInfoById(String id);
 }
